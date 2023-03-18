@@ -97,6 +97,23 @@
 --------------- GROUP BY, HAVING  -------------------
 
 -- TASK 10- 1 -  how many city we have in each country from locations table
+        SELECT COUNTRY_ID,COUNT(*) FROM LOCATIONS
+        GROUP BY COUNTRY_ID;
+
+        -- BEST PRACTICE IN THIS EXAMPLE SINCE WE NEED TO COUNT CITIES
+        SELECT COUNTRY_ID,COUNT(CITY) FROM LOCATIONS
+        GROUP BY COUNTRY_ID;
+
+        SELECT COUNTRY_ID,CITY FROM LOCATIONS;
+
+
+        -- COUNT(*) VS COUNT(CNAME)
+        -- COUNT(*) --> WILL COUNT ROWS
+        -- COUNT(CNAME) --> WILL COUNT COLUMNS AND IGNORES NULL VALUES
+        SELECT FIRST_NAME,DEPARTMENT_ID FROM EMPLOYEES;
+        SELECT COUNT(DEPARTMENT_ID) FROM EMPLOYEES; --> 106
+        SELECT COUNT(*) FROM EMPLOYEES; --> 107
+
 
 -- TASK 10- 2  - order them based on city count in desc
 
