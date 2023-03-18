@@ -312,6 +312,9 @@
 -- FULL OUTER JOIN RETURNS EVERYTHING
 -- Display all firstname and department name including the department without employees
 -- and also employees without the department
+    SELECT FIRST_NAME,DEPARTMENT_NAME FROM DEPARTMENTS D
+                                           FULL JOIN EMPLOYEES E on D.DEPARTMENT_ID = E.DEPARTMENT_ID;
+
 
 
 --TASK 1-1
