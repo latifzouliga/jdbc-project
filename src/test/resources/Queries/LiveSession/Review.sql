@@ -352,9 +352,16 @@
 
 ----- SELF JOIN ---
 -- Display  all employees and their  managers information
+select WORKERS.FIRST_NAME,WORKERS.LAST_NAME,MANAGERS.FIRST_NAME,MANAGERS.LAST_NAME
+from EMPLOYEES WORKERS  inner join EMPLOYEES MANAGERS
+                                   on WORKERS.MANAGER_ID=MANAGERS.EMPLOYEE_ID;
 
+-- IQ --> Given the Employee table, write a SQL query that finds out employees who earns more than their managers.
+select WORKERS.FIRST_NAME,WORKERS.LAST_NAME,WORKERS.SALARY,MANAGERS.SALARY,MANAGERS.FIRST_NAME,MANAGERS.LAST_NAME
+from EMPLOYEES WORKERS  inner join EMPLOYEES MANAGERS
+                                   on WORKERS.MANAGER_ID=MANAGERS.EMPLOYEE_ID
+WHERE WORKERS.SALARY>MANAGERS.SALARY;
 
--- Given the Employee table, write a SQL query that finds out employees who earn more than their managers.
 
 
 -------  SET OPERATORS ---
