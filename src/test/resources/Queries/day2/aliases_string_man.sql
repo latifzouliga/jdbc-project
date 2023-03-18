@@ -86,7 +86,7 @@ select email, length(email) as email_length FROM EMPLOYEES;
     select FIRST_NAME,substr(FIRST_NAME,-3) from EMPLOYEES;
 
 /*
-    - if beginning index is 0, it is treated as 1
+    -if beginning index is 0, it is treated as 1
     -if the beginning index negative, it will start from backwards
     -if we dont specify number of char it will work till the end
  */

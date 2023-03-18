@@ -72,12 +72,13 @@
 
 
 -- TASK 8 - display country id and country name where country name ends with a
-
+        SELECT COUNTRY_ID,COUNTRY_NAME FROM COUNTRIES
+        WHERE COUNTRY_NAME LIKE '%a';
 
 
 -- TASK 9 -  display country id and country name where country name ends with a and third letter is i
-
-
+        SELECT COUNTRY_ID,COUNTRY_NAME FROM COUNTRIES
+        WHERE COUNTRY_NAME LIKE '__i%a';
 
 
 ------ INTERVIEW QUESTION  -->
@@ -87,7 +88,9 @@
     Sort your results in ascending order of the last 3 characters in the employees first_name
     if two or more employees have first_names ending with same 3 characters, then sort them by highest salary
 */
-
+    SELECT FIRST_NAME,SALARY FROM EMPLOYEES
+    WHERE SALARY>3000
+    ORDER BY LOWER(SUBSTR(FIRST_NAME,-3)) ASC,SALARY DESC ;
 
 
 
