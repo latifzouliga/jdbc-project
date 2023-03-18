@@ -1,19 +1,43 @@
 --------------- SELECT ,WHERE, LIKE -------------------
 
 --TASK 1 - display department names  from departments table
+    SELECT DEPARTMENT_NAME FROM DEPARTMENTS;
 
 --TASK 2 - display first_name, last_name, department_id, salary from employees
+    SELECT FIRST_NAME,LAST_NAME,DEPARTMENT_ID,SALARY FROM EMPLOYEES;
+
 
 --TASK 3 - display first_name, last_name, department_id, salary from employees whose salary is higher than 9000
+    SELECT FIRST_NAME,LAST_NAME,DEPARTMENT_ID,SALARY FROM EMPLOYEES
+    WHERE SALARY>9000;
+
 
 --TASK 4 - display first_name, last_name, department_id, salary from employees
 --         whose salary equals or more than 9000 and salary equals or less than 15000
 --         sort result based on salary asc
 
+    -- OPT --> 1
+    SELECT FIRST_NAME,LAST_NAME,DEPARTMENT_ID,SALARY FROM EMPLOYEES
+    WHERE SALARY>=9000 AND SALARY<=15000
+    ORDER BY SALARY ; -- AS DEFAULT IT WILL SORT IN ASC ORDER
+    -- ORDER BY 4 ; -- AS DEFAULT IT WILL SORT IN ASC ORDER
+
+    -- OPT --> 2
+    SELECT FIRST_NAME,LAST_NAME,DEPARTMENT_ID,SALARY FROM EMPLOYEES
+    WHERE SALARY BETWEEN 9000 AND 15000 -- BETWEEN LOWER AND UPPER (THIS BOUNDARIES ARE INCLUDED)
+    ORDER BY SALARY ASC;
+
+
+
 
 --TASK 5 -  display first_name, last_name, department_id, salary from employees
 --          whose firstname is Peter and salary is bigger than 5000
 --          sort result based on salary desc
+    SELECT FIRST_NAME,LAST_NAME,DEPARTMENT_ID,SALARY FROM EMPLOYEES
+    WHERE FIRST_NAME='Peter' AND SALARY>5000
+    ORDER BY SALARY DESC;
+    -- '' --> DATA INSIDE SINGLE QUOTE IS CASE SENSITIVE
+
 
 
 --TASK 6 - display country_id, country_name from countries table for region id 2 or 4
