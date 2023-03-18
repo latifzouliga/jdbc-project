@@ -116,31 +116,84 @@
 
 
 -- TASK 10- 2  - order them based on city count in desc
+        SELECT COUNTRY_ID,COUNT(CITY) AS CITY_COUNT FROM LOCATIONS
+        GROUP BY COUNTRY_ID
+        ORDER BY CITY_COUNT DESC;
+
 
 -- TASK 10- 3 -  filter result where country id starts with C
+        SELECT COUNTRY_ID,COUNT(CITY) AS CITY_COUNT FROM LOCATIONS
+        WHERE COUNTRY_ID LIKE 'C%'
+        GROUP BY COUNTRY_ID
+        ORDER BY CITY_COUNT DESC;
+
 
 -- TASK 10- 3 -  display country id if city count is bigger than 1
+        SELECT COUNTRY_ID,COUNT(CITY) AS CITY_COUNT FROM LOCATIONS
+        GROUP BY COUNTRY_ID
+        HAVING COUNT(CITY)>1
+        ORDER BY CITY_COUNT DESC;
+
 
 -- TASK 11 -1  How many employees is working for each department
+        SELECT DEPARTMENT_ID,COUNT(*) AS EMPLOYEE_COUNT FROM EMPLOYEES
+        GROUP BY DEPARTMENT_ID;
 
 -- TASK 11 -2  ignore null departments
+        SELECT DEPARTMENT_ID,COUNT(*) AS EMPLOYEE_COUNT FROM EMPLOYEES
+        WHERE DEPARTMENT_ID IS NOT NULL
+        GROUP BY DEPARTMENT_ID;
 
 -- TASK 11 -3  display department id where employees count is less than 5
-
+        SELECT DEPARTMENT_ID,COUNT(*) AS EMPLOYEE_COUNT FROM EMPLOYEES
+        WHERE DEPARTMENT_ID IS NOT NULL
+        GROUP BY DEPARTMENT_ID
+        HAVING COUNT(*)<5;
 
 
 ------- SUBQUERY -------
+
 -- TASK 12 - Display those employees firstname,lastname and salary
 --           who get higher salary than the employee whose employee_id is 132
 
+    --STEP 1 --> FIND ME SALARY OF EMPLOYEE_ID 132
+    SELECT FIRST_NAME,SALARY FROM EMPLOYEES
+    WHERE EMPLOYEE_ID=132;
+
+    --STEP 2 --> FIND ME WHO IS GETTING MORE THAN 2100
+    SELECT FIRST_NAME,LAST_NAME,SALARY FROM EMPLOYEES
+    WHERE SALARY>2100;
+
+    -- SOLUTION --> MAKE IT DYNAMIC
+    SELECT FIRST_NAME,LAST_NAME,SALARY FROM EMPLOYEES
+    WHERE SALARY>(SELECT SALARY FROM EMPLOYEES
+                  WHERE EMPLOYEE_ID=132);
 
 -- TASK 13 -  Display Manager firstname,lastname of Peter,Vargas from employees table
+
+    SELECT * FROM EMPLOYEES;
+    --STEP 1 --> FIND ME MANAGER ID FOR  Peter,Vargas
+      SELECT MANAGER_ID FROM EMPLOYEES
+      WHERE FIRST_NAME='Peter' AND LAST_NAME='Vargas'; --124
+
+    --STEP 2 --> FIND ME INFORMATION ABOUT EMPLOYEE_ID 124
+     SELECT FIRST_NAME,LAST_NAME FROM EMPLOYEES
+     WHERE EMPLOYEE_ID=124;
+
+
+    -- SOLUTION --> MAKE IT DYNAMIC
+    SELECT FIRST_NAME,LAST_NAME FROM EMPLOYEES
+    WHERE EMPLOYEE_ID=(SELECT MANAGER_ID FROM EMPLOYEES
+                       WHERE FIRST_NAME='Peter' AND LAST_NAME='Vargas');
+
 
 -- TASK 14 - Display Employees first_name,last_name who reports to 'Steven King'
 
 -- TASK 15 -  display all information who is getting 11th highest salary
 
 -- TASK 16 - Display employees first_name,last_name who is working in Marketing department
+
+
 
 --- DDL / DML ---
 
