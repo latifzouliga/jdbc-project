@@ -43,12 +43,32 @@
 --TASK 6 - display country_id, country_name from countries table for region id 2 or 4
 --         sort result based on region_id desc and country_name asc
 
+        --OPT-->1
+        SELECT COUNTRY_ID,COUNTRY_NAME,REGION_ID FROM COUNTRIES
+        WHERE REGION_ID=2 OR REGION_ID=4
+        ORDER BY REGION_ID DESC,COUNTRY_NAME ASC;
 
+        --OPT-->2
+        SELECT COUNTRY_ID,COUNTRY_NAME,REGION_ID FROM COUNTRIES
+        WHERE REGION_ID IN(2,4)
+        ORDER BY REGION_ID DESC,COUNTRY_NAME ASC;
 
 
 --TASK 7 -  display employee firstname and lastname as fullname , salary as annual salary  , job_id
---          whose job title starts with S
+--          whose job ID starts with S
 
+        SELECT FIRST_NAME||' '||LAST_NAME AS FULLNAME,SALARY*12 AS "ANNUAL SALARY",JOB_ID
+        FROM EMPLOYEES
+        WHERE JOB_ID LIKE 'S%';
+        -- % --> REFERS 0 OR MORE LETTER
+        -- _ --> REFERS SINGLE LETTER
+
+        -- whose job ID starts with S AND TOTAL 6 LETTER
+        SELECT FIRST_NAME||' '||LAST_NAME AS FULLNAME,SALARY*12 AS "ANNUAL SALARY",JOB_ID
+        FROM EMPLOYEES
+        WHERE JOB_ID LIKE 'S_____';
+        -- % --> REFERS 0 OR MORE LETTER
+        -- _ --> REFERS SINGLE LETTER
 
 
 -- TASK 8 - display country id and country name where country name ends with a
