@@ -320,10 +320,16 @@
 --TASK 1-1
 -- From the departments and locations tables,
 -- display the department name, city, and state province for each department.
-
+SELECT d.department_name, l.city, l.state_province
+FROM departments d
+         JOIN locations l ON d.location_id = l.location_id;
 
 --TASK 1-2
 -- display only department names ends with Sales
+SELECT d.department_name, l.city, l.state_province
+FROM departments d
+         JOIN locations l ON d.location_id = l.location_id
+WHERE DEPARTMENT_NAME LIKE '%Sales';
 
 
 -- TASK 2
@@ -331,37 +337,54 @@
 -- find those employees whose first name contains a letter 'z'.
 -- Return first name, last name, department, city, and state province.
 
+SELECT e.first_name, e.last_name, d.department_name, l.city, l.state_province
+FROM employees e
+         JOIN departments d ON e.department_id = d.department_id
+         JOIN locations  l ON d.location_id = l.location_id
+WHERE e.first_name LIKE '%z%';
+
+
 
 --TASK 3
 -- From the employees and departments table,
--- compute the average salary, number of employees for each department.
+-- compute the average salary, number of employees in for each department..
 -- Return department name, average salary and number of employees.
+
+SELECT d.department_name, round(AVG(e.salary)) AS avg_salary, COUNT(e.employee_id) AS employee_count
+FROM employees e
+         JOIN departments  d ON e.department_id = d.department_id
+GROUP BY d.department_name;
 
 
 --TASK 4
 -- From the employees, departments, and locations tables,
 -- find full name (first and last name), and salary of those employees
 -- who work in any department located in Oxford .
+SELECT CONCAT(e.first_name, concat(' ', e.last_name))  , e.salary,CITY
+FROM employees  e
+         JOIN departments  d ON e.department_id = d.department_id
+         JOIN locations  l ON d.location_id = l.location_id
+WHERE l.city = 'Oxford';
 
 
---TASK 5
--- From the employees, departments, and locations tables,
--- find avg salary for each city
 
+--TASK 5  From the employees, departments, and locations tables,
+-- -- find avg salary for each city
+SELECT city,round(avg(salary))
+FROM employees  e
+         JOIN departments  d ON e.department_id = d.department_id
+         JOIN locations  l ON d.location_id = l.location_id
+group by city;
 
 
 ----- SELF JOIN ---
--- Display  all employees and their  managers information
 select WORKERS.FIRST_NAME,WORKERS.LAST_NAME,MANAGERS.FIRST_NAME,MANAGERS.LAST_NAME
 from EMPLOYEES WORKERS  inner join EMPLOYEES MANAGERS
                                    on WORKERS.MANAGER_ID=MANAGERS.EMPLOYEE_ID;
 
--- IQ --> Given the Employee table, write a SQL query that finds out employees who earns more than their managers.
+
+-- Given the Employee table, write a SQL query that finds out employees who earn more than their managers.
 select WORKERS.FIRST_NAME,WORKERS.LAST_NAME,WORKERS.SALARY,MANAGERS.SALARY,MANAGERS.FIRST_NAME,MANAGERS.LAST_NAME
-from EMPLOYEES WORKERS  inner join EMPLOYEES MANAGERS
-                                   on WORKERS.MANAGER_ID=MANAGERS.EMPLOYEE_ID
-WHERE WORKERS.SALARY>MANAGERS.SALARY;
-
-
-
--------  SET OPERATORS ---
+from EMPLOYEES WORKERS  left join EMPLOYEES MANAGERS
+                                  on WORKERS.MANAGER_ID=MANAGERS.EMPLOYEE_ID
+where WORKERS.SALARY>MANAGERS.SALARY;
