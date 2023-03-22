@@ -1,0 +1,18 @@
+Review SQL with Oscar
+Your questions and Interview perspective
+* How do you do DB testing and how you connect to DB?
+* What was your of purpose of DB testing?
+ --- Feed your front end testing data with info from database: expected vs actual
+ --- verify UI and DB information is matching
+ --- to connect any DB: "connection string"  --- url of DB (IP + port), username, password and specific driver for DBMS
+* questions on joins ?
+* Data vs DataBase
+- HR database : tables are connected with primary keys and foreign keys -- Relational DB Management Systems
+- Non-relational DB: key and value structure - mongoDB
+
+** in cydeo apps: HR-oracle, Library-mySQL
+SQL : structured query language
+Data Query Lang: Select --- gives you table column information
+Data Manipulation Lang: Insert, Delete, Update
+Data Definition lang: create, alter, drop, rename, truncate
+
