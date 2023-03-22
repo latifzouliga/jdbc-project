@@ -52,9 +52,36 @@
 
 -- 21. display all job_id and average salary who work as any of these jobs
 -- IT_PROG,SA_REP, FI_ACCOUNT, AD_VP
+    SELECT JOB_ID,AVG(SALARY) AS "AVERAGE SALARY" FROM EMPLOYEES
+    WHERE JOB_ID IN ('IT_PROG','SA_REP','FI_ACCOUNT','AD_VP')
+    GROUP BY JOB_ID;
+
+    -- IT IS INEFFICIENT
+    SELECT JOB_ID,AVG(SALARY) AS "AVERAGE SALARY" FROM EMPLOYEES
+    GROUP BY JOB_ID
+    HAVING JOB_ID IN ('IT_PROG','SA_REP','FI_ACCOUNT','AD_VP');
 
 
--- 23. Display total salary for each department except department_id 50, and where
+
+-- 23. Display total salary for each department except department_id 50, and where total salary more than 30000
+    SELECT DEPARTMENT_ID,SUM(SALARY) FROM EMPLOYEES
+    GROUP BY DEPARTMENT_ID
+    HAVING SUM(SALARY)>30000;
+
+    -- OPT 1 --> WITH WHERE
+    SELECT DEPARTMENT_ID,SUM(SALARY) FROM EMPLOYEES
+    WHERE DEPARTMENT_ID!=50
+    GROUP BY DEPARTMENT_ID
+    HAVING SUM(SALARY)>30000;
+
+    -- OPT 2 --> BAD PRACTICE AND NOT EFFICIENT
+    SELECT DEPARTMENT_ID,SUM(SALARY) FROM EMPLOYEES
+    GROUP BY DEPARTMENT_ID
+    HAVING SUM(SALARY)>30000 AND DEPARTMENT_ID!=50;
+
+
+
+
 
 
 
