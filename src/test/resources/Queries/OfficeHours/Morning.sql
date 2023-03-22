@@ -2,12 +2,24 @@
 
 
 --4. List all the different region_ids in countries table
+    SELECT DISTINCT REGION_ID FROM COUNTRIES;
+
 
 --5. Display the salary of the employee Grant Douglas (lastName: Grant, firstName: Douglas)
+
+    SELECT SALARY FROM EMPLOYEES
+    WHERE FIRST_NAME='Douglas' AND LAST_NAME='Grant';
 
 --6. Display all department information from departments table
 -- if the department name values are as below
 -- IT , Public Relations , Sales , Executive
+    -- > OPTION --1
+    SELECT * FROM DEPARTMENTS
+    WHERE DEPARTMENT_NAME='IT' OR  DEPARTMENT_NAME='Sales' OR  DEPARTMENT_NAME='Public Relations' OR  DEPARTMENT_NAME='Executive';
+
+    -- > OPTION --2
+    SELECT * FROM DEPARTMENTS
+    WHERE DEPARTMENT_NAME IN ('IT','Sales','Public Relations','Executive');
 
 
 -- 16 . Display all unique job_id that end with CLERK in employee table
