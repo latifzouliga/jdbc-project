@@ -21,11 +21,28 @@
     SELECT * FROM DEPARTMENTS
     WHERE DEPARTMENT_NAME IN ('IT','Sales','Public Relations','Executive');
 
+    -- NOT IN  operator will excluded following departments
+    SELECT * FROM DEPARTMENTS
+    WHERE DEPARTMENT_NAME NOT IN ('IT','Sales','Public Relations','Executive');
 
--- 16 . Display all unique job_id that end with CLERK in employee table
+-- 16 . Display all unique job_id that ends with CLERK in employee table
+
+    SELECT DISTINCT JOB_ID FROM EMPLOYEES
+    WHERE JOB_ID LIKE '%CLERK';
+
+    SELECT DISTINCT JOB_ID,FIRST_NAME FROM EMPLOYEES
+    WHERE JOB_ID LIKE '%CLERK';
+
+
 
 -- 20-4 How many employees are there in each group that have minimum
 -- salary of 5000 ?
+
+
+
+
+
+
 
 
 -- 21. display all job_id and average salary who work as any of these jobs
