@@ -38,11 +38,16 @@
 -- 20-4 How many employees are there in each group that have minimum
 -- salary of 5000 ?
 
+    SELECT JOB_ID,COUNT(*) FROM EMPLOYEES
+    WHERE SALARY>=5000
+    GROUP BY JOB_ID;
 
-
-
-
-
+    -- IT WILL FILTER RESULT AFTER GROUP ACCORDING TO THEIR MIN SALARY
+    -- SINCE IT PROG EMPLOYEES MIN SALARY IS 4200
+    -- IT WILL NOT SHOW THIS GROUP
+    SELECT JOB_ID,COUNT(*) FROM EMPLOYEES
+    GROUP BY JOB_ID
+    HAVING MIN(SALARY)>=5000;
 
 
 -- 21. display all job_id and average salary who work as any of these jobs
