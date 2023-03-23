@@ -35,7 +35,25 @@ Regions Table : region_id (pk), region_name ....
 *** give me all the students from batch 28 that lives in Colorado
 select * from students s join regions r on s.region_id=r.regions_id where batchNumber=28 and region_name='Colorado';
 
+PIQ: Find me duplicate names in Students Table
 
+select name, count(*) from students group by name; ----->
+name    count
+arclean  1
+oscar    3
+ahmet    5
+mehmet   4
+sevket   1
 
+select name, count(*) from students group by name having count() > 1;
+oscar    3
+ahmet    5
+mehmet   4
 
+PIQ: Tell me about joins in SQL?
+-- if we have information at different tables that can be joined over PK - FK, then we joins
+- inner join
+- outer join
+- left outer join
+- right outer join
 

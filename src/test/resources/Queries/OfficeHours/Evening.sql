@@ -52,21 +52,23 @@ group by JOB_ID;
 
 
 -- 23. Display total salary for each department except department_id 50, and where total salary more than 30000
-select DEPARTMENT_ID, sum(SALARY) from EMPLOYEES
+select DEPARTMENT_ID, sum(SALARY) as "Total_Salary" from EMPLOYEES
 group by DEPARTMENT_ID
 having sum(SALARY) >= 30000 and DEPARTMENT_ID != 50;
-
+-- sum(SALARY) as "Total_Salary"    column aliases
 
 ---- PRACTICE 2 ----
 --8.  Find the 3rd maximum salary from the employees table (do not include duplicates)
-
+--- how we order info?  query inside another query, we get min salary of MAXIMUM TOP 3 SALARIES
+select min(SALARY) from (select distinct SALARY from EMPLOYEES order by SALARY desc) where rownum<4;
+select distinct SALARY from EMPLOYEES order by SALARY desc;
 
 --12. Find the 3rd minimum salary from the employees table (do not include duplicates)
 
 ---- PRACTICE 3 ----
 -- 1. FIND OUT COUNTRY NAME AND REGION NAME FROM COUNTRIES AND  REGION TABLE
-
-
+select C.REGION_ID, C.COUNTRY_NAME, R.REGION_NAME from COUNTRIES C join REGIONS R on C.REGION_ID = R.REGION_ID;
+-- C is table aliases
 -- 3.  FIND OUT DEPARTMENT_NAME AND CITY
 
 
