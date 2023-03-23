@@ -16,3 +16,26 @@ Data Query Lang: Select --- gives you table column information
 Data Manipulation Lang: Insert, Delete, Update
 Data Definition lang: create, alter, drop, rename, truncate
 
+PIQ: what are/is a wild card in SQL? we know some part of the info
+we use like statement with % (more than one chars) and _ (one char)
+
+WHen we use group by statement; we need to ask information about that group
+
+PIQ : What is difference between where and having?
+where is used as filtering option before grouping
+having is used as filtering option after grouping
+
+
+*** they might give you a generic, not real database table names;
+
+Students Table : name, id (pk), region_id (FK), batchNumber (FK)
+Batches Table : batchNumber(pk), total students, start_date, end_date
+Regions Table : region_id (pk), region_name ....
+
+*** give me all the students from batch 28 that lives in Colorado
+select * from students s join regions r on s.region_id=r.regions_id where batchNumber=28 and region_name='Colorado';
+
+
+
+
+
