@@ -29,6 +29,9 @@ public class P01_JDBCPractice {
         // It will store all data that we are getting after execution
         ResultSet rs = stmnt.executeQuery("select COUNTRY_ID,CITY from locations");
 
+
+        ResultSetMetaData rsmd = rs.getMetaData();
+
         /*
             RETRIEVING DATA IN FOLLOWING FORMAT
             IT - Roma
@@ -58,6 +61,43 @@ public class P01_JDBCPractice {
         System.out.println("--- GET ME PREVIOUS ROW   --- ");
         rs.previous();
         System.out.println(rs.getString(1)+"-"+rs.getString(2));
+
+        System.out.println("--- FIRST   --- ");
+        rs.first();
+        System.out.println(rs.getString(1)+"-"+rs.getString(2));
+
+
+        // PRINT ALL DATA DYNAMICALLY
+        rs.beforeFirst();
+
+        System.out.println("----PRINT ALL DATA DYNAMICALLY-------");
+        while(rs.next()){
+
+            System.out.println(rs.getString(1)+"-"+rs.getString(2));
+
+        }
+
+
+        // HOW MANY COLUMN WE HAVE 
+        int columnCount = rsmd.getColumnCount();
+        System.out.println("columnCount = " + columnCount);
+
+        System.out.println("---- HOW TO LEARN COLUMN NAME ----");
+        System.out.println(rsmd.getColumnName(1));
+        System.out.println(rsmd.getColumnName(2));
+
+        System.out.println("---- PRINT ALL COLUMN NAME DYNAMICALLY ----");
+        for (int i = 1; i <= columnCount; i++) {
+            System.out.println(rsmd.getColumnName(i));
+        }
+
+
+
+        System.out.println("---- GET ALL DATA DYNAMICALLY ----");
+
+        // COUNTRY_ID- IT  CITY - Roma
+        // COUNTRY_ID- IT  CITY - Venice
+
 
 
 
