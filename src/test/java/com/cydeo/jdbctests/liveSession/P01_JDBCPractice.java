@@ -30,8 +30,17 @@ public class P01_JDBCPractice {
         ResultSet rs = stmnt.executeQuery("select COUNTRY_ID,CITY from locations");
 
         /*
-            RETRIEVING DATA
+            RETRIEVING DATA IN FOLLOWING FORMAT
+            IT - Roma
         */
+
+        System.out.println("--- FIRST ROW --- ");
+        rs.next();
+        System.out.println(rs.getString(1)+"-"+rs.getString(2));
+
+
+
+
 
 
 
