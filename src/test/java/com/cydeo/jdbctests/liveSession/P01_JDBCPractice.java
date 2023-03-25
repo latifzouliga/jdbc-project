@@ -27,7 +27,7 @@ public class P01_JDBCPractice {
         Statement stmnt= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
         // It will store all data that we are getting after execution
-        ResultSet rs = stmnt.executeQuery("select COUNTRY_ID,CITY from locations");
+        ResultSet rs = stmnt.executeQuery("select * from locations");
 
 
         ResultSetMetaData rsmd = rs.getMetaData();
@@ -98,6 +98,21 @@ public class P01_JDBCPractice {
         // COUNTRY_ID- IT  CITY - Roma
         // COUNTRY_ID- IT  CITY - Venice
 
+        // to reset cursor
+        rs.beforeFirst();
+
+        // ITERATE EACH ROW DYNAMICALLY
+        while(rs.next()){
+
+            // ITERATE EACH COLUMN DYNAMICALLY
+            for (int i = 1; i <= columnCount; i++) {
+
+                System.out.print(rsmd.getColumnName(i)+"-"+rs.getString(i)+"    ");
+
+            }
+            System.out.println();
+
+        }
 
 
 
