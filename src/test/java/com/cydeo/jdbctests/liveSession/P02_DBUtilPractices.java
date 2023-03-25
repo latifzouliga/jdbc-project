@@ -3,6 +3,9 @@ package com.cydeo.jdbctests.liveSession;
 import com.cydeo.jdbctests.utility.DB_Util;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.Map;
+
 public class P02_DBUtilPractices {
 
     @Test
@@ -43,13 +46,19 @@ public class P02_DBUtilPractices {
 
         System.out.println("GET COLUMN DATA AS LIST--> String columnName");
         System.out.println(DB_Util.getColumnDataAsList("city"));
+        List<String> cities = DB_Util.getColumnDataAsList("city");
 
 
         System.out.println("GET ROW MAP");
-
+        System.out.println(DB_Util.getRowMap(1));
 
         System.out.println("GET ALL ROW AS LIST OF MAP");
 
+        List<Map<String, String>> allData = DB_Util.getAllRowAsListOfMap();
+
+        for (Map<String, String> eachRow : allData) {
+            System.out.println(eachRow);
+        }
 
         // CLOSE CONN
         DB_Util.destroy();
