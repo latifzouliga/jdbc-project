@@ -24,7 +24,7 @@ public class P01_JDBCPractice {
         Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 
         // It will create Statement Object to execute queries
-        Statement stmnt= conn.createStatement();
+        Statement stmnt= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
         // It will store all data that we are getting after execution
         ResultSet rs = stmnt.executeQuery("select COUNTRY_ID,CITY from locations");
@@ -39,8 +39,14 @@ public class P01_JDBCPractice {
         System.out.println(rs.getString(1)+"-"+rs.getString(2));
 
 
+        System.out.println("--- SECOND ROW --- ");
+        rs.next();
+        System.out.println(rs.getString(1)+"-"+rs.getString(2));
 
 
+        System.out.println("--- 10TH ROW --- ");
+        rs.absolute(10);
+        System.out.println(rs.getString(1)+"-"+rs.getString(2));
 
 
 
