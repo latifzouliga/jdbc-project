@@ -48,6 +48,17 @@ public class P01_JDBCPractice {
         rs.absolute(10);
         System.out.println(rs.getString(1)+"-"+rs.getString(2));
 
+        System.out.println("--- GET ROW  --- ");
+        System.out.println(rs.getRow());
+
+        System.out.println("--- HOW MANY ROW WE HAVE  --- ");
+        rs.last();
+        System.out.println(rs.getRow());
+
+        System.out.println("--- GET ME PREVIOUS ROW   --- ");
+        rs.previous();
+        System.out.println(rs.getString(1)+"-"+rs.getString(2));
+
 
 
         rs.close();
