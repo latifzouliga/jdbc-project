@@ -27,7 +27,7 @@ public class P01_JDBCPractice {
         Statement stmnt= conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
         // It will store all data that we are getting after execution
-        ResultSet rs = stmnt.executeQuery("select * from locations");
+        ResultSet rs = stmnt.executeQuery("select COUNTRY_ID,CITY from locations");
 
 
         ResultSetMetaData rsmd = rs.getMetaData();
@@ -113,6 +113,13 @@ public class P01_JDBCPractice {
             System.out.println();
 
         }
+
+
+
+
+
+
+
 
 
 
