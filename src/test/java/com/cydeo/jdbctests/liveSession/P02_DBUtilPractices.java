@@ -36,12 +36,13 @@ public class P02_DBUtilPractices {
 
 
         System.out.println("GET FIRST ROW FIRST COLUMN VALUE");
-
+        System.out.println(DB_Util.getFirstRowFirstColumn());
 
         System.out.println("GET COLUMN DATA AS LIST--> int columnNum");
-
+        System.out.println(DB_Util.getColumnDataAsList(2));
 
         System.out.println("GET COLUMN DATA AS LIST--> String columnName");
+        System.out.println(DB_Util.getColumnDataAsList("city"));
 
 
         System.out.println("GET ROW MAP");
