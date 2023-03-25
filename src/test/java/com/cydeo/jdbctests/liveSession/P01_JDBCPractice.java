@@ -10,5 +10,8 @@ public class P01_JDBCPractice {
 
     @Test
     public void jdbcPractice() {
+
+
+
     }
 }
