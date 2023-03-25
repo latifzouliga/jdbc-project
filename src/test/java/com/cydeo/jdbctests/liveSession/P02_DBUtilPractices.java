@@ -20,18 +20,19 @@ public class P02_DBUtilPractices {
         System.out.println(DB_Util.getRowCount());
 
         System.out.println("GET ME COLUMN COUNT ");
-
+        System.out.println(DB_Util.getColumnCount());
 
         System.out.println("GET ALL COLUMN NAME AS LIST");
+        System.out.println(DB_Util.getAllColumnNamesAsList());
 
-
-        System.out.println("GET ROW DATA AS LIST");
-
+        System.out.println("GET ROW DATA AS LIST--> FIRST ROW --> 1 ");
+        System.out.println(DB_Util.getRowDataAsList(1));
 
         System.out.println("GET CELL VALUE --> int rowNum , int columnIndex");
-
+        System.out.println(DB_Util.getCellValue(1, 1));
 
         System.out.println("GET CELL VALUE --> int rowNum ,String columnName");
+        System.out.println(DB_Util.getCellValue(1, "city"));
 
 
         System.out.println("GET FIRST ROW FIRST COLUMN VALUE");
