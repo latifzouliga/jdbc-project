@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class P01_JDBCIntro {
 
-    //CONNECTION STRING   jdbc:oracle:thin:@174.129.55.241:1521:XE
+    //CONNECTION STRING
     String dbUrl = "jdbc:oracle:thin:@174.129.55.241:1521:XE";
     String dbUsername ="hr";
     String dbPassword = "hr";
@@ -36,6 +36,16 @@ public class P01_JDBCIntro {
 
        while(rs.next()){
            System.out.println(rs.getString(2)+" - "+ rs.getString(4));
+       }
+
+       System.out.println("====================== location =========================");
+       rs = statement.executeQuery("select * from LOCATIONS");
+       while (rs.next()){
+           System.out.println(
+                   rs.getString(1) + "=====" +
+                           rs.getString(2) + "====="+
+                           rs.getString(3)
+           );
        }
 
 
