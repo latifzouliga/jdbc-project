@@ -1,0 +1,79 @@
+Part 1
+ SOLUTIONS
+1. List all the employees first and last name with their salary in employees table
+select first_name, last_name, salary from employees;
+2. How many employees have salary less than 5000?
+select count(*) from employees where salary > 5000;
+3. How many employees have salary between 6000 and 7000?
+select count(*) from employees where salary between 6000 and 7000;
+4. List all the different region_ids in countries table
+select distinct region_id from countries;
+5. Display the salary of the employee Grant Douglas (lastName: Grant, firstName:
+Douglas)
+select salary from employees where last_name = 'Grant' and first_name = 'Douglas';
+6. Display all department information from departments table
+-- if the department name values are as below
+-- IT , Public Relations , Sales , Executive
+select * from departments
+where department_name in ('IT' , 'Public Relations' , 'Sales' , 'Executive' )
+7. Display the maximum salary in employees table
+select max(salary) from employees;
+8. Display the the minimum salary in employees table
+select min(salary) from employees;
+9. Display the average salary of the employees;
+select avg(salary) from employees;
+10. Count the total numbers of the departments in departs table
+select count(*) from departments;
+11. Sort the start_date in ascending order in job_history's table
+select * from job_history order by start_date;
+select * from job_history order by start_date asc;
+12. Sort the start_date in descending order in job_history's table
+select * from job_history order by start_date desc;
+13. Display all records whose last name contains 2 lowercase ‘a's
+select * from employees where last_name like '%a%a%';
+14. Display all the employees whose first name starts with ‘A’
+select * from employees where first_name like 'A%';
+15. Display all the employees whose job_ID contains ‘IT’
+select * from employees where job_id like '%IT%';
+16. Display all unique job_id that end with CLERK in employee table
+select distinct job_id
+from employees
+where job_id like '%CLERK' ;
+17.Display all employees first name starts with A and have exactly 4 characters
+select first_name
+from employees
+where first_name like 'A___' ;
+18. Display all the employees whose department id in 50, 80, 100
+select * from employees where department_id in (80, 50, 100);
+19. Display all employees who does not work in any one of these department id
+—> 90, 60, 100, 130, 120
+select * from employees where department_id not in (90,60, 100, 130, 120);
+20. divide employees into groups by using their job id
+select job_id from employees group by job_id;
+-- 1 display the maximum salaries in each groups
+	 	 select job_id, max(salary) from employees group by job_id;
+-- 2 display the minimum salaries in each groups
+	 	 select job_id, min(salary) from employees group by job_id;
+-- 3 display the average salary of each group
+	 	 select job_id, avg(salary) from employees group by job_id;
+-- 4 how many employees are there in each group that have minimum
+salary of 5000 ?
+select job_id, count(*) from employees
+	 	 where salary >= 5000
+	 	 group by job_id;
+-- 5 display the total budgets of each groups
+	 	 select job_id, sum(salary) from employees group by job_id ;
+21. display all job_id and average salary who work as any of these jobs
+IT_PROG,SA_REP, FI_ACCOUNT, AD_VP
+select job_id, avg(salary) as "average salary"
+from employees
+group by job_id
+having job_id IN ('IT_PROG', 'SA_REP', 'FI_ACCOUNT', 'AD_VP');
+22.Display max salary for each department
+select max(salary), department_id
+from employees
+group by department_id;
+23. Display total salary for each department except department_id 50, and where
+select department_id, sum(salary) from employees
+group by department_id
+having sum(salary) > 30000 and department_id != 50;

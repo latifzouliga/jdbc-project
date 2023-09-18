@@ -7,7 +7,7 @@ import java.sql.*;
 public class P02_FlexibleNavigation {
 
     //CONNECTION STRING
-    String dbUrl = "jdbc:oracle:thin:@54.86.2.212:1521:XE";
+    String dbUrl = "jdbc:oracle:thin:@174.129.55.241:1521:XE";
     String dbUsername ="hr";
     String dbPassword = "hr";
 
